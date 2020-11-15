@@ -1,1 +1,1 @@
-web gunicorn SevManager:app
+web gunicorn app:app
