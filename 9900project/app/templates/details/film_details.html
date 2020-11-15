@@ -1,0 +1,284 @@
+{% extends '/basic/BasicConfig.html' %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+   <style>
+         body {
+            background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)), url('/static/image/welcome/back.jpg');
+        }
+        #rating_input {
+            width: 150px;
+        }
+        .ratings_part {
+            margin-right: 333px;
+            margin-top: 70px;
+            float: right;
+        }
+        .top_part{
+            width: 100%;
+            height: 250px;
+        }
+        .ratings_show {
+            position: relative;
+            width: 600px;
+            height: 150px;
+            margin-left: 30px;
+        }
+        .ratings_show_main {
+            height: 150px;
+            float: left;
+            margin-left: 670px;
+            margin-top: 20px;
+        }
+        .recommend{
+            position: relative;
+        }
+        .mid_part{
+            width: 100%;
+            margin-left: 70px;
+        }
+        .post_part {
+            width: 810px;
+            height: 160px;
+            margin-left: 350px;
+        }
+        .postshow_part {
+            width: 810px;
+            margin-left: 350px;
+        }
+        .desfile {
+            float: left;
+            margin-top: 5px;
+            width: 810px;
+        }
+        .info {
+            width: 400px;
+            margin-left: 550px;
+            padding-left: 150px;
+            margin-bottom: -150px;
+            padding-top: 220px;
+        }
+
+         .infodes {
+            width: 810px;
+            margin-left: 420px;
+            margin-top: 260px;
+        }
+
+        .wishlist {
+          color:red
+        }
+
+        .similar {
+            float: right;
+            margin-top: -250px;
+            margin-right: 400px;
+            width: 200px;
+        }
+        .cover {
+            padding-left: 420px;
+            padding-top: 0px;
+            height: 0px;
+        }
+        body {
+           overflow: scroll;
+        }
+        #rating_submit{
+            width: 150px;
+            background-color: #ed662b;
+            color: #f9f9f9;
+        }
+        #post-comment{
+            width: 130px;
+            height: 30px;
+            background-color: #ed662b;
+            color: #f9f9f9;
+            border: #ed662b;
+        }
+        .cover {
+             background-color: #ed662b;
+        }
+        .btn {
+              width: 230px;
+              background-color: white;
+              border: none;
+              color: black;
+              padding: 3px 3px;
+              text-align: center;
+              display: inline-table;
+              font-size: 16px;
+              -webkit-transition-duration: 0.4s; /* Safari */
+              transition-duration: 0.4s;
+              cursor: pointer;
+              text-decoration: none;
+        }
+        .btn1 {
+              background-color: #ED662B;
+              color: black;
+              border: 2px solid #ED662B;
+        }
+        .btn:hover {
+              background-color: #ED662B;
+              color: white;
+        }
+        .similar {
+            width: 150px;
+            margin-left: 1300px;
+        }
+        .fonn {
+            font-family: HFAria-Slab-2;
+            font-size: 50px;
+            color: #ffffff;
+            font-weight: 700;
+            text-transform: none;
+            margin-bottom: 25px;
+        }
+        @font-face {
+            font-family:HFAria-Slab-2;
+            src:url("font/HFAria-Slab-2.ttf")；
+        }
+        .h2, h2 {
+            font-size: 30px;
+        }
+        .h4, .h5, .h6, h4, h5, h6 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        .hengxiang {
+            display: inline-block;
+            width: 200px;
+        }
+        .ignore {
+            float: right;
+        }
+   </style>
+   <body>
+   <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #020C16">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{url_for('search.film_search')}}">Film Finder</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+       <div class="top_part">
+        <div class="cover">
+            {% if ':' in movie_name %}
+             <img class="filmcover" src="/static/image/filmcover/{{movie_name.replace(':', '-')}}.jpg" alt="cover" width="230px" height="400px">
+            {% else %}
+            <img class="filmcover" src="/static/image/filmcover/{{movie_name}}.jpg" alt="cover" width="230px" height="400px">
+            {% endif %}
+            <br>
+            <br>
+            <div class="btn">
+                {% if current_user.is_authenticated %}
+                    {% if id not in cur_wlist %}
+                        <button type="button" class="btn btn-default">
+                          <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span><a style="margin-left: 5px" href="{{ url_for('wishlist.add', movie_id=id) }}" >Add to my wishlist</a>
+                        </button>
+                    {% else %}
+                        <button type="button" class="btn btn-default">
+                          <span class="glyphicon glyphicon-heart" aria-hidden="true"></span><a style="margin-left: 5px" href="{{ url_for('wishlist.wishlists', username=current_user.username) }}" >my wishlist</a>
+                        </button>
+                    {% endif %}
+                {% else %}
+                    <button type="button" class="btn btn-default">
+                      <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span><a style="margin-left: 5px" href="{{ url_for('guide.login')}}" >Add to my wishlist</a>
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+        <div class="ratings_show_main">
+            <div class="ratings_show">
+                <h1 style="color:#FFFFFF" class="fonn">{{ movie_name }}</h1>
+                <h2 style="color:#FFFFFF">Rating: <b style="color:#ED662B">{{ new_rating }}</b></h2>
+                <h4 style="color:#FFFFFF">Type: <br>{{ movie_type }}</h4>
+            </div>
+        </div>
+        <div class="ratings_part" style="color:#FFFFFF">
+          <form class="form" method="POST" enctype=multipart/form-data>
+              {{ form.hidden_tag() }}
+              {{ wtf.form_field(form.rating, class="form-control rating", id="rating_input") }}
+              {{ wtf.form_field(form.submit, class="form-control submit", id="rating_submit") }}
+              <br>
+              <div class="recommend">
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('guide.recommend_movies') }}" style="color:#ED662B">movie recommendation</a>
+                {% else %}
+                <a href="{{ url_for('guide.login')}}" style="color:#ED662B">movie recommendation</a>
+                {% endif %}
+              </div>
+          </form>
+        </div>
+        <div class="info">
+                <h4 style="color:#FFFFFF">Release Date:<br>{{ issue_date }}</h4>
+                <h4 style="color:#FFFFFF">Director: <br>{{ director }}</h4>
+                <h4 style="color:#FFFFFF">Actor: <br>{{ actor }}</h4>
+        </div>
+
+    </div>
+    <div class="infodes">
+        <p style="color:#FFFFFF">{{ film_description }}</p>
+        <hr>
+    </div>
+    <div class="mid_part">
+        <div class="post_part">
+          <form class="postform" method="POST" enctype=multipart/form-data style="color:#FFFFFF">
+            <div class="desfile">
+                {{ wtf.form_field(postform.text, class="form-control description") }}
+                {{ wtf.form_field(postform.submit, class="buttun-control submit", id="post-comment") }}
+                <hr>
+            </div>
+          </form>
+        </div>
+        <div class="postshow_part">
+          {{ form.hidden_tag() }}
+          {% for x in comments %}
+            <div class="media">
+              <div class="media-left">
+                <a href="#">
+                  <img class="media-object" src="{{ x['avatar']}}" alt="avatar" width="64px">
+                </a>
+              </div>
+              <div class="media-body">
+                <a class="media-heading" href="{{ url_for('wishlist.wishlists', username=x['username']) }}" style="color:#ED662B">{{ x['username']}}</a>
+                <a class="ignore" href="{{ url_for('details.delete_comments', username=x['username'], movie_id=x['movie_id']) }}" style="color:#ED662B">Ignore</a><br>
+                <small class="media-heading" style="color:#FFFFFF">rating:{{ x['ratings']}}</small>
+                <p class="media-heading" style="color:#FFFFFF">{{ x['description']}}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="similar">
+            <b style="color:#FFFFFF">Similar Types of Films</b>
+            <hr>
+            {% for x in similar_movies %}
+                <div class="henxiang" align="center">
+                {% if ':' in x['movie_name'] %}
+                    <img class="filmcover" src="/static/image/filmcover/{{ x['movie_name'].replace(':', '-') }}.jpg" alt="cover" width="150px" height="230px"><br>
+                    {% else %}
+                    <img class="filmcover" src="/static/image/filmcover/{{ x['movie_name'] }}.jpg" alt="cover" width="150px" height="230px"><br>
+                    {% endif %}
+                    <a href="{{ url_for('details.film_details', movie_id = x['movie_id']) }}" style="color:#ED662B"> {{ x['movie_name'] }} </a><br>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% if current_user.is_authenticated %}
+        {% include('/basic/nav_buttons.html')%}
+    {% else %}
+    {% endif %}
+
+   </body>
+{% endblock %}

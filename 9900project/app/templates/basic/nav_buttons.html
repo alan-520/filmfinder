@@ -1,0 +1,236 @@
+<ul class="btn-list">
+    <li><div id="profile_btn" class="stn-button" onclick="show()">
+        <div>
+            <svg xmlns="http://www.w3.org/2000/svg" height="100%" width="100%" viewBox="0 0 65.04 52.87">
+                <defs><style>.a-1{fill:#ffdbb8;}.a-2{fill:#d15d1c;}</style></defs>
+                <title>person</title>
+                <path class="a-1" d="M54.45,21.79V38.45c0,8-5.93,14.42-13.24,14.42H25c-7.32,0-13.24-6.46-13.24-14.42V21.79Z"></path>
+                <path class="a-2" d="M56.62,18.34C58.32,12.35,51.36,5.06,41,2,33.32-.22,25.9.54,21.89,3.56a13,13,0,1,0-.36,19.16A7.24,7.24,0,0,0,32.37,23c.75.28,1.51.54,2.3.77a29.69,29.69,0,0,0,11.61,1.14,9.61,9.61,0,1,0,10.34-6.58Z"></path>
+                <path class="a-1" d="M47.74,34.6s2.24-3.52,8-3.2,6.41,5.77,1.6,6.73a9,9,0,0,0-6.41,4.48Z"></path>
+            </svg>
+        </div>
+    </div></li>
+
+    {%- if not title %}
+        <li><div id="map" class="stn-button">
+        <div>
+            <a href="{{ url_for('search.film_search') }}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -1 33 29"><defs><style>.cls-1{fill:#ffdbb8;}.cls-2{fill:#fff;}.cls-3{fill:#ed662b;}</style></defs><title>map</title><g id="图层_2" data-name="图层 2"><g id="图层_2-2" data-name="图层 2"><polygon class="cls-1" points="11 25 0 29 0 4 11 0 11 25"/><polygon class="cls-2" points="11 25 22 29 22 4 11 0 11 25"/><polygon class="cls-1" points="33 25 22 29 22 4 33 0 33 25"/><path class="cls-3" d="M22,4,11,0,0,4V29l11-4,11,4,11-4V0Zm9,19.6-9,3.27-11-4L2,26.14V5.4l9-3.27,11,4,9-3.27Z"/><path class="cls-3" d="M6.17,14.48a.51.51,0,0,1-.48-.35A4.12,4.12,0,0,1,5.5,13a.5.5,0,0,1,.5-.5.48.48,0,0,1,.5.5,2.92,2.92,0,0,0,.15.83.51.51,0,0,1-.33.63A.39.39,0,0,1,6.17,14.48Z"/><path class="cls-3" d="M23.63,18a.51.51,0,0,1-.5-.49.5.5,0,0,1,.49-.51,3.86,3.86,0,0,0,1.65-.39.5.5,0,1,1,.46.89,4.84,4.84,0,0,1-2.09.5Zm-1.86-.42a.47.47,0,0,1-.25-.07,3.7,3.7,0,0,1-1.45-1.65.5.5,0,1,1,.9-.44A2.76,2.76,0,0,0,22,16.65a.5.5,0,0,1-.25.93ZM9,16.5A3.5,3.5,0,0,1,7,16a.5.5,0,0,1,.55-.83A2.79,2.79,0,0,0,9,15.5a.54.54,0,0,1,.54.46.47.47,0,0,1-.42.54Zm17.92-.24a.45.45,0,0,1-.27-.08.51.51,0,0,1-.14-.7,5.36,5.36,0,0,0,.71-1.62.48.48,0,0,1,.61-.35.49.49,0,0,1,.35.61A6.49,6.49,0,0,1,27.34,16,.5.5,0,0,1,26.92,16.26Zm-16.09-.59a.46.46,0,0,1-.36-.16.48.48,0,0,1,0-.7,10.24,10.24,0,0,0,1.2-1.41.51.51,0,0,1,.7-.1.5.5,0,0,1,.1.7,10.7,10.7,0,0,1-1.33,1.54A.47.47,0,0,1,10.83,15.67Zm9.06-1.36a.5.5,0,0,1-.48-.37l-.1-.37c-.14-.52-.27-1-.43-1.46a.5.5,0,0,1,.94-.34c.18.48.32,1,.46,1.54l.09.37a.5.5,0,0,1-.35.61Zm-6.61-1.65a.51.51,0,0,1-.32-.12.49.49,0,0,1-.06-.7,7.87,7.87,0,0,1,1.47-1.44.5.5,0,0,1,.7.1.51.51,0,0,1-.11.7,7,7,0,0,0-1.29,1.28A.51.51,0,0,1,13.28,12.66Zm5-1.8a.47.47,0,0,1-.28-.09,2.2,2.2,0,0,0-1.5-.23.51.51,0,0,1-.57-.42.51.51,0,0,1,.42-.57,3.14,3.14,0,0,1,2.21.4.49.49,0,0,1,.13.69A.47.47,0,0,1,18.28,10.86Z"/><path class="cls-3" d="M28,12.5h0A.5.5,0,0,1,27.5,12a7.8,7.8,0,0,0,0-.93A.5.5,0,0,1,28,10.5a.5.5,0,0,1,.54.46,10.24,10.24,0,0,1,0,1.06A.5.5,0,0,1,28,12.5Z"/><path class="cls-3" d="M28.94,11.4l.86-.86a.66.66,0,0,0-.94-.94l-.86.86-.86-.86a.66.66,0,0,0-.94.94l.86.86-.86.86a.65.65,0,0,0,0,.94.65.65,0,0,0,.94,0l.86-.86.86.86a.65.65,0,0,0,.94,0,.65.65,0,0,0,0-.94Z"/><path class="cls-3" d="M6,8a2,2,0,0,0-2,2c0,1.1.9,4,2,4s2-2.9,2-4A2,2,0,0,0,6,8Zm0,3a1,1,0,1,1,1-1A1,1,0,0,1,6,11Z"/></g></g></svg></a>
+        </div>
+    </div></li>
+    {%- endif %}
+    <li><div id="logout" class="stn-button">
+        <div>
+            <a href="{{ url_for('guide.logout') }}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-4 -1 32 32"><defs><style>.b-1{fill:#ed662b;}.b-2{fill:#ffdbb8;}.b-3{fill:#fff;}.b-4{fill:none;stroke:#ed662b;stroke-linecap:round;stroke-miterlimit:10;stroke-width:0.94px;}</style></defs><title>logout</title><g id="图层_2" data-name="图层 2"><g id="图层_2-2" data-name="图层 2"><rect class="b-1" width="23" height="28.33" rx="1.05"/><rect class="b-2" x="-1.16" y="4.16" width="25.33" height="20" rx="0.67" transform="translate(-2.66 25.66) rotate(-90)"/><path class="b-1" d="M1.09.16l16,2.38a.86.86,0,0,1,.78.81V30a.91.91,0,0,1-1.09.81l-16-2.38A.86.86,0,0,1,0,27.63V1A.91.91,0,0,1,1.09.16Z"/><path class="b-3" d="M1.5,26.56V2.37a.55.55,0,0,1,.63-.54L15.92,3.88a.55.55,0,0,1,.47.54V28.6a.55.55,0,0,1-.63.55L2,27.1A.55.55,0,0,1,1.5,26.56Z"/><line class="b-4" x1="14" y1="14.16" x2="14" y2="18.59"/></g></g></svg></a>
+        </div>
+    </div></li>
+</ul>
+<div id="rank_page" class="iframe_page">
+    <iframe src="/profile/ranking" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowTransparency="true" class="rank_hover"></iframe>
+    <div class="hover_mask"></div>
+</div>
+<div id="detail_page" class="iframe_page">
+     <iframe src="/profile/detail" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowTransparency="true" class="detail_hover"></iframe>
+    <div class="hover_mask"></div>
+</div>
+<div id="error_page" class="iframe_page">
+     <iframe src="/profile/question_set" frameborder="no" border="0" marginwidth="0" marginheight="0" scrolling="no" allowTransparency="true" class="question_set_hover"></iframe>
+    <div class="hover_mask"></div>
+</div>
+
+<style>
+    #background-pop{
+        display: none;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+    #div-pop {
+        background: #f9f9f9;
+        width: 1030px;
+        height: 610px;
+        z-index: 1;
+        margin: 5% auto;
+        overflow: auto;
+        border-radius: 10px;
+    }
+
+    .div-top1{
+        width: 100%;
+        height: 80px;
+        background-color: rgb(255, 184, 77);
+        color: #ffffff;
+    }
+    .col-1{
+        height: 500px;
+        width: 690px;
+        float: left;
+        margin-top: 15px;
+        margin-left: 20px;
+        background: hsl(38, 100%, 89%);
+        border-radius: 20px;
+        box-shadow: 0 0 5px 5px hsl(38, 100%, 79%);
+    }
+    .col-2{
+        height: 500px;
+        width: 250px;
+        float: right;
+        margin-top: 15px;
+        margin-right: 20px;
+        background: hsl(40, 100%, 89%);
+        border-radius: 20px;
+        box-shadow: 0 0 5px 5px hsl(40, 100%, 69%);
+        cursor: pointer;
+    }
+    .col-2:hover{
+        background: hsl(35, 100%, 89%);
+        box-shadow: 0 0 10px 10px hsl(43, 100%, 69%);
+
+    }
+    .col-1:hover{
+        background: hsl(35, 100%, 89%);
+        box-shadow: 0 0 10px 10px hsl(43, 100%, 75%);
+    }
+    #close-button{
+        position: relative;
+        right: 0;
+        color: white;
+        margin-left: 970px ;
+        cursor: pointer;
+        font-size: 20px;
+    }
+    #close-button:hover{
+        color: #ba3a13;
+    }
+    .top-text{
+        position: relative;
+        text-align: center;
+        font-size: 30px;
+        padding-bottom: 10px;
+        top: -9px;
+    }
+    .avatar{
+        position: relative;
+        float: left;
+        margin-left: 26px;
+        margin-top: 26px;
+    }
+    .avatar1{
+        width: 250px;
+        height: 250px;
+        border-radius: 15px;
+    }
+    .user-info{
+        position: relative;
+        float: right;
+        margin-top: 66px;
+        margin-right: 77px;
+    }
+    .edit-button {
+        display: inline-block;
+        padding: 5px 150px;
+        font-size: 14px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #4c63af;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 5px #999;
+        margin-left: 424px;
+        margin-top: 10px;
+    }
+
+    .edit-button:hover {
+        background-color: #2b47a3;
+    }
+
+    .edit-button:active {
+      background-color: #2b47a3;
+      box-shadow: 0 3px #666;
+      transform: translateY(4px);
+    }
+    h3{
+       font-family: 'Roboto Light'
+    }
+    h2{
+        font-family: 'Roboto Light';
+        font-size: 30px;
+    }
+    .col-3{
+        position: relative;
+        margin-left: 26px;
+        text-align: center;
+        background: #f9f9f9;
+        width: 20px;
+        height: 20px;
+        width: 200px;
+        height: 80px;
+        margin-top: 21px;
+        border-radius: 10px;
+    }
+</style>
+
+<div id="background-pop">
+    <div id="div-pop">
+        <div class="div-top1">
+            <span id="close-button">back</span>
+            <p class="top-text">My Card</p>
+        </div>
+        <div class="col-1">
+            <div class="avatar">
+                <img class="avatar1" src="{{ avatar }}">
+            </div>
+            <div class="user-info">
+                {% if not nickname %}
+                    <h3 class="name" style="font-size: 40px; font-weight: bold;font-family: 'Roboto Light'"> Hi! {{username}} </h3>
+                {% else %}
+                    <h3 class="name" style="font-size: 40px; font-weight: bold;font-family: 'Roboto Light'"> Hi! {{nickname}} </h3>
+                {% endif %}
+                <h3 class="gender" style="font-size: 20px; color: #2b47a3">Gender: {{gender}}</h3>
+                <h2 style="font-size: 20px; color: #2b47a3">Email: {{email}}</h2>
+            </div>
+            <div class="email-des" style="position: relative; top: 60px; left: -244px; width: 500px">
+                <h2 style="font-size: 23px; margin-top: 229px; font-weight: bold;">Description: </h2>
+                {% if description %}
+                    <h2 style="font-size: 20px; width: 650px; margin-left: 276px">{{description}}</h2>
+                {% else %}
+                    <h2 style="font-size: 20px; width: 650px; margin-left: 276px">
+Gosh, you don't even have any description of yourself, you can show yourself on the edit profile page!</h2>
+                {% endif %}
+                <button class="edit-button" onclick="edit_profile()">Edit</button>
+            </div>
+
+        </div>
+        <div class="col-2">
+            <h2 class="wish" style="color: #ed662b; font-weight: bold; margin-left: 32px">My WishList</h2>
+            {% for x in cur_wlist[:4]%}
+                <div class="col-3"><a href="{{ url_for('details.film_details', movie_id=x) }}">{{ movies_db.find_one({'movie_id': x})['movie_name'] }}</a><br><p>type: {{ movies_db.find_one({'movie_id': x})['movie_type'] }}</p><p>director: {{ movies_db.find_one({'movie_id': x})['director'] }}</p></div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+<script>
+    function edit_profile() {
+        win = window.open('/guide/edit_profile')
+    }
+
+    var div = document.getElementById('background-pop');
+        var close = document.getElementById('close-button');
+        function show(){
+            div.style.display = "block";
+        }
+        close.onclick = function close() {
+            div.style.display = "none";
+        };
+        window.onclick = function close(e) {
+            if (e.target == div) {
+                div.style.display = "none";
+            }
+        }
+</script>

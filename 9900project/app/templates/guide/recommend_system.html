@@ -1,0 +1,32 @@
+{% extends '/basic/BasicConfig.html' %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #292421">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{url_for('search.film_search')}}">Film Finder</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+    <div style="height: 800px; overflow:auto">
+        {% for x in movies %}
+        <a href="{{ url_for('details.film_details', movie_id = x['movie_id']) }}">movie info: {{ x }}</a>
+        {% endfor %}
+        {% include('/basic/nav_buttons.html')%}
+    </div>
+</body>
+{% endblock %}

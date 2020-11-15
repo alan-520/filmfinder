@@ -1,0 +1,67 @@
+{% extends '/basic/BasicConfig.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block styles %}
+{{ super() }}
+<style>
+    body {
+        padding:0;
+        background-image: url('/static/image/welcome/back.jpg');
+    }
+    #search_input{
+        width: 650px;
+        height: 45px;
+    }
+    #submit{
+        width: 100px;
+    }
+    .wtf_button{
+    }
+    .search-input {
+        position: relative;
+        top: -8%;
+        left: 33%;
+        padding-bottom: 0px;
+        width: 650px;
+    }
+    .content{
+        position:absolute;
+        top:0;
+        left:0;
+        z-index: -1;
+        height: 100%;
+        width: 100%;
+        background-image: url('/static/image/welcome/back.jpg');
+    }
+    .app-title{
+        position: relative;
+        top: 27%;
+        left: 45%;
+        font-size: 59px;
+    }
+    img {
+        vertical-align: middle;
+        padding-top: 100px;
+        padding-left: 500px;
+    }
+</style>
+{% endblock %}
+{% block content %}
+<body>
+    <div class="content">
+                <div style="position:relative;">
+                    <img id="logo" src="/static/image/welcome/logo1.png" height="100%">
+                </div>
+        <div class="search-input">
+            <form class="form" method="POST" enctype=multipart/form-data>
+                {{ form.hidden_tag() }}
+                <div class="wtf_button">
+                    {{ wtf.form_field(form.search, class="form-control search", id="search_input") }}
+                </div>
+            </form>
+            <h1>{{data}}</h1>
+        </div>
+    </div>
+
+
+</body>
+{% endblock %}

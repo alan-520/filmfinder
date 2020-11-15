@@ -1,0 +1,124 @@
+{% extends '/basic/BasicConfig.html' %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<!-- Bootstrap core CSS -->
+    <link href="/static/style/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <link href="/static/style/ie10-viewport-bug-workaround.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/style/dashboard.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="/static/scripts/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="/static/scripts/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<body style="overflow: scroll">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #292421">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{url_for('search.film_search')}}">Film Finder</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li class="active"><a href="{{ url_for('wishlist.wishlists', username=username) }}">Overview <span class="sr-only">(current)</span></a></li>
+            <li><a href="{{ url_for('guide.logout') }}">Log out</a></li>
+
+          </ul>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <h1 class="page-header">WishList</h1>
+
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="{{ avatar }}" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>{{ username }}</h4>
+
+            </div>
+
+
+          <h2 class="sub-header">Welcome to watch my films!</h2>
+
+          <div class="table-responsive">
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th style="text-align: center">Movie name</th>
+                  <th style="text-align: center">Director</th>
+                  <th style="text-align: center">Movie Type</th>
+                  <th style="text-align: center">Rating</th>
+                  <th style="text-align: center">Manage</th>
+                </tr>
+              </thead>
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Fliter
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li><a href="{{ url_for('wishlist.wishlists', username=username) }}">Default</a></li>
+                    <li><a href="{{ url_for('wishlist.wishlists_by_director', username=username) }}">By Director</a></li>
+                    <li><a href="{{ url_for('wishlist.wishlists_by_ratings', username=username) }}">By rating</a></li>
+                    <li><a href="{{ url_for('wishlist.wishlists_by_type', username=username) }}">By type</a></li>
+
+                    </ul>
+                </div>
+
+              <tbody>
+                  <meta charset="UTF-8">
+                  {% for movie_id in movieid_lists %}
+                    <tr>
+                        <td><a href="{{ url_for('details.film_details', movie_id=movie_id) }}">{{ movie_items[movie_id][0] }}</a></td>
+                        <td>{{ movie_items[movie_id][2] }}</td>
+                        <td>{{movie_items[movie_id][1] }}</td>
+                        <td>{{movie_items[movie_id][3] }}</td>
+                        <td>
+                          <a class="btn btn-primary btn-sm" href="{{ url_for('wishlist.delete', movie_id=movie_id) }}">Delete</a>
+                        </td>
+                    </tr>
+                  {% endfor %}
+
+              </tbody>
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/static/scripts/jquery.min.js"><\/script>')</script>
+    <script src="/static/style/bootstrap.min.js"></script>
+    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+    <script src="/static/scripts/holder.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/static/scripts/ie10-viewport-bug-workaround.js"></script>
+  </body>
+{% endblock %}

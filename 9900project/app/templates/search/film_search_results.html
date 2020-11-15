@@ -1,0 +1,50 @@
+{% extends '/basic/BasicConfig.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block content %}
+<style>
+        body {
+            background-image: linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.6)), url('/static/image/welcome/back.jpg');
+        }
+        .hengxiang {
+            display: inline-block;
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+</style>
+<body style="overflow: scroll">
+    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #020C16">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{url_for('search.film_search')}}">Film Finder</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-right">
+          </ul>
+
+        </div>
+      </div>
+    </nav>
+    <div style="width: 100%; height: 100%; position: absolute">
+        {% if list %}
+        {% for x in list %}
+            <div class="hengxiang" align="center">
+                {% if ':' in x['movie_name'] %}
+                <a href="{{ url_for('details.film_details', movie_id = x['movie_id']) }}"><img class="filmcover" src="/static/image/filmcover/{{ x['movie_name'].replace(':', '-') }}.jpg" alt="cover" width="250px" height="400px"></a>><br>
+                {% else %}
+                    <a href="{{ url_for('details.film_details', movie_id = x['movie_id']) }}"><img class="filmcover" src="/static/image/filmcover/{{ x['movie_name'] }}.jpg" alt="cover" width="250px" height="400px"></a><br>
+                {% endif %}
+                <a href="{{ url_for('details.film_details', movie_id = x['movie_id']) }}" style="color:#ED662B"> {{ x['movie_name'] }} </a><br>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h1>There is no related film information!</h1>
+    {% endif %}
+    </div>
+</body>
+{% endblock %}
